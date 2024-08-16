@@ -409,7 +409,8 @@ const PlayerContextProvider = (props) => {
         previous: playPreviousTrack,
         next: playNextTrack,
         shuffle,
-        toggleShuffle
+        toggleShuffle,
+        url
     };
 
     return (

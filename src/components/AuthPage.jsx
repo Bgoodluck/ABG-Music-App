@@ -227,14 +227,15 @@
 // export default AuthPage;
 
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';  
 import { toast } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
+import { PlayerContext } from '../context/PlayerContext';
 
 const AuthPage = () => {
-    const url = process.env.REACT_APP_API_URL || "https://abg-music-api.onrender.com";
+    const {url} = useContext(PlayerContext)
     const [isRegister, setIsRegister] = useState(false);
     const [formData, setFormData] = useState({
         name: '',

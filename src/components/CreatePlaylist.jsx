@@ -11,9 +11,9 @@ const CreatePlaylist = () => {
     const [selectedSongs, setSelectedSongs] = useState([]);
     const navigate = useNavigate();
 
-    const { songsData, playWithId, updatePlaylists } = useContext(PlayerContext); 
+    const { songsData, playWithId, updatePlaylists, url } = useContext(PlayerContext); 
 
-    const url = process.env.REACT_APP_API_URL || "https://abg-music-api.onrender.com";
+    
 
     const handleCreatePlaylist = async () => {
         const userId = localStorage.getItem('userId');
