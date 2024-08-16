@@ -234,7 +234,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AuthPage = () => {
-    const url = "https://abg-music-api.onrender.com";
+    const url = process.env.REACT_APP_API_URL || "https://abg-music-api.onrender.com";
     const [isRegister, setIsRegister] = useState(false);
     const [formData, setFormData] = useState({
         name: '',

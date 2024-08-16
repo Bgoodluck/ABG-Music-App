@@ -13,7 +13,7 @@ const CreatePlaylist = () => {
 
     const { songsData, playWithId, updatePlaylists } = useContext(PlayerContext); 
 
-    const url = "https://abg-music-api.onrender.com";
+    const url = process.env.REACT_APP_API_URL || "https://abg-music-api.onrender.com";
 
     const handleCreatePlaylist = async () => {
         const userId = localStorage.getItem('userId');
