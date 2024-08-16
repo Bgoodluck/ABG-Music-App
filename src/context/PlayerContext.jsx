@@ -7,7 +7,7 @@ const PlayerContextProvider = (props) => {
     const audioRef = useRef();
     const seekBg = useRef();
     const seekBar = useRef();
-    const url = process.env.REACT_APP_API_URL ;
+    const url = process.env.REACT_APP_API_URL || "https://abg-music-api.onrender.com";
 
     const [songsData, setSongsData] = useState([]);
     const [albumsData, setAlbumsData] = useState([]);
@@ -377,6 +377,11 @@ const PlayerContextProvider = (props) => {
             audioRef.current.ontimeupdate = null;
         };
     }, [audioRef]);
+
+    useEffect(() => {
+        console.log('API URL:', url);
+    }, [url]);
+    
 
     const contextValue = {
         audioRef,
