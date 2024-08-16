@@ -116,7 +116,7 @@ const PlayerContextProvider = (props) => {
 
     const getSongsData = async () => {
         try {
-            const response = await axios.get(`${url}/api/song/list`);
+            const response = await axios.get( url + "/api/song/list");
             console.log("Raw API response:", response.data);
             if (!response.data.songs || response.data.songs.length === 0) {
                 console.error("No songs data received from API");
@@ -162,7 +162,7 @@ const PlayerContextProvider = (props) => {
    
     const getAlbumsData = async () => {
         try {
-            const response = await axios.get(`${url}/api/album/list`);
+            const response = await axios.get(url +"/api/album/list");
             setAlbumsData(response.data.albums);
         } catch (error) {
             console.error('Error fetching albums data:', error);
@@ -172,7 +172,7 @@ const PlayerContextProvider = (props) => {
     const getPlaylistsData = async () => {
         try {
             const token = localStorage.getItem('token'); 
-            const response = await axios.get(`${url}/api/playlist/getplay`, {
+            const response = await axios.get(url +"/api/playlist/getplay", {
                 headers: {
                     Authorization: `Bearer ${token}` 
                 }
@@ -201,7 +201,7 @@ const PlayerContextProvider = (props) => {
     const addSongToLiked = async (songId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.post(`${url}/api/playlist/liked`, 
+            const response = await axios.post(url +"/api/playlist/liked", 
                 { songId },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -216,7 +216,7 @@ const PlayerContextProvider = (props) => {
 
     const getLikedSongsData = async () => {
         try {
-            const response = await axios.get(`${url}/api/playlist/likedplay`);
+            const response = await axios.get(url +"/api/playlist/likedplay");
             console.log('Liked songs response:', response.data);
             setLikedSongsData(response.data.songs || []);
         } catch (error) {
@@ -227,7 +227,7 @@ const PlayerContextProvider = (props) => {
     
     const getMostPlayedSongsData = async () => {
         try {
-            const response = await axios.get(`${url}/api/playlist/mostplay`);
+            const response = await axios.get(url +"/api/playlist/mostplay");
             console.log('Most played songs response:', response.data);
             setMostPlayedSongsData(response.data.songs || []);
         } catch (error) {
@@ -242,7 +242,7 @@ const PlayerContextProvider = (props) => {
    
     const createNewPlaylist = async (name, description) => {
         try {
-            const response = await axios.post(`${url}/api/playlist/create`, { name, description });
+            const response = await axios.post(url +"/api/playlist/create", { name, description });
             console.log("Playlist created:", response.data);
             
             // Add the new playlist to the existing playlists
@@ -257,7 +257,7 @@ const PlayerContextProvider = (props) => {
     
     const addSongToPlaylist = async (songId, playlistId) => {
         try {
-            const response = await axios.post(`${url}/api/playlist/add`, { songId, playlistId });
+            const response = await axios.post(url +"/api/playlist/add", { songId, playlistId });
             console.log("Song added to playlist:", response.data);
             
             // Update the playlists data to reflect the change
