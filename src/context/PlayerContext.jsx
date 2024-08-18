@@ -118,6 +118,7 @@ const PlayerContextProvider = (props) => {
         try {
             const response = await axios.get( url + "/api/song/list");
             console.log("Raw API response:", response.data);
+            
             if (!response.data.songs || response.data.songs.length === 0) {
                 console.error("No songs data received from API");
                 return;
